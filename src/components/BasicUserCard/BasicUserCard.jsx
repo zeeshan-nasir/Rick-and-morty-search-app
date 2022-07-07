@@ -1,11 +1,12 @@
 import React from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
+import { useContext } from "react";
 import { useState } from "react";
+import { DataContext } from "../../contexts/DataContext";
 import DetailedUserCard from "../DetailedUserCard/DetailedUserCard";
 import "./basicUserCard.css";
 
 const BasicUserCard = () => {
-    const [data, setData] = useState([]);
     const [detailedData, setDetailedData] = useState({
         gender: "",
         id: "",
@@ -20,19 +21,10 @@ const BasicUserCard = () => {
         species: "",
         status: "",
     });
+
     const [display, setDisplay] = useState(false);
 
-    useEffect(() => {
-        const getData = async () => {
-            const fetched = await fetch(
-                "https://rickandmortyapi.com/api/character/?name=rick&page=1"
-            );
-            const res = await fetched.json();
-            setData([...res.results]);
-        };
-
-        getData();
-    }, []);
+    const { data } = useContext(DataContext);
 
     return (
         <div>
@@ -72,7 +64,9 @@ const BasicUserCard = () => {
                                 />
 
                                 <p className="basic-card-statusSize">
-                                    {e.status} - {e.species}
+                                    {e.status.charAt(0).toUpperCase() +
+                                        e.status.slice(1)}{" "}
+                                    - {e.species}
                                 </p>
                             </div>
                         </div>
