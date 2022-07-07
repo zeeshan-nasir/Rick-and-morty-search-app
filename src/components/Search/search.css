@@ -1,0 +1,25 @@
+.search-div {
+    width: 62%;
+    margin: auto;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    height: 55px;
+    margin-top: 60px;
+}
+
+.search-field {
+    width: 100%;
+    height: 50px;
+    border: none;
+    outline: none;
+}
+
+.search-field::placeholder {
+    color: rgb(179, 190, 209);
+    font-size: .85rem;
+}
+
+.search-icon {
+    padding: 0px 10px 0px 25px;
+}

@@ -1,0 +1,80 @@
+.detailed-card-container {
+    width: 400px;
+    background-color: white;
+    text-align: left;
+    border-radius: 10px;
+    position: relative;
+}
+
+.detailed-card-upperDiv {
+    display: flex;
+    height: 50%;
+    justify-content: center;
+    align-items: center;
+    gap: 12%;
+    border-bottom: 1px solid rgb(194, 194, 194);
+    margin: 0px 30px;
+    padding: 25px 0px 10px;
+}
+
+.detailed-card-upperDiv-left {
+    width: 30%;
+}
+
+.detailed-card-upperDiv-right {
+    width: 70%;
+}
+
+.detailed-card-profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.detailed-card-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.detailed-card-statusDiv {
+    display: flex;
+    align-items: center;
+    margin-top: -17px;
+}
+
+.detailed-card-status {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+}
+
+.detailed-card-statusSize {
+    font-size: .9rem;
+}
+
+.detailed-card-lowerDiv {
+    height: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 17px;
+    margin: 15px 35px;
+    padding: 0px 0px 40px;
+}
+
+.detailed-card-lowerDiv-greyText {
+    color: rgb(153, 156, 168);
+    font-size: .8rem;
+    margin: 5px 0px;
+}
+
+.detailed-card-lowerDiv-blackText {
+    font-size: .9rem;
+    margin: 0px;
+}
+
+.detailed-card-iconDiv {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+}

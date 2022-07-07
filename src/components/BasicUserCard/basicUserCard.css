@@ -1,0 +1,55 @@
+.basic-card-container {
+    width: 62%;
+    margin: auto;
+    margin-top: 12px;
+}
+
+.basic-card {
+    display: flex;
+    margin-bottom: 5px;
+    background-color: white;
+    justify-content: space-around;
+    height: 60px;
+    cursor: pointer;
+}
+
+.basic-card-leftDiv {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    padding-left: 5%;
+    gap: 10px;
+}
+
+.basic-card-rightDiv {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    gap: 10px;
+}
+
+.basic-card-profilePic {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+.basic-card-status {
+    width: 8px;
+    height: 8px;
+}
+
+.basic-card-name {
+    font-size: .95rem;
+}
+
+.basic-card-statusSize {
+    font-size: .8rem;
+}
+
+.detailed-card-in-basic {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
