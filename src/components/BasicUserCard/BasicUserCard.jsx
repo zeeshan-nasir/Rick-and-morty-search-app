@@ -1,6 +1,6 @@
-import React from "react";
-// import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import { DataContext } from "../../contexts/DataContext";
 import DetailedUserCard from "../DetailedUserCard/DetailedUserCard";
@@ -23,8 +23,35 @@ const BasicUserCard = () => {
     });
 
     const [display, setDisplay] = useState(false);
+    const { data, page, setPage } = useContext(DataContext);
 
-    const { data } = useContext(DataContext);
+    const lastElement = useRef();
+    const observer = useRef();
+
+    useEffect(() => {
+        const options = {
+            root: document,
+            rootMargin: "20px",
+            threshold: 1,
+        };
+
+        const callback = (entries) => {
+            if (entries[0].isIntersecting) {
+                const newPage = page + 1;
+                setPage(newPage);
+            }
+        };
+
+        observer.current = new IntersectionObserver(callback, options);
+
+        if (lastElement.current) {
+            observer.current.observe(lastElement.current);
+        }
+
+        return () => {
+            observer.current.disconnect();
+        };
+    });
 
     return (
         <div>
@@ -62,7 +89,6 @@ const BasicUserCard = () => {
                                     }
                                     alt=""
                                 />
-
                                 <p className="basic-card-statusSize">
                                     {e.status.charAt(0).toUpperCase() +
                                         e.status.slice(1)}{" "}
@@ -73,6 +99,7 @@ const BasicUserCard = () => {
                     );
                 })}
             </div>
+            <div ref={lastElement}></div>
             <div
                 style={{ display: display ? "block" : "none" }}
                 className="detailed-card-in-basic"

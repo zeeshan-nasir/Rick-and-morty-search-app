@@ -1,10 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./search.css";
 import { AiOutlineSearch } from "react-icons/ai";
 import { DataContext } from "../../contexts/DataContext";
 
 const Search = () => {
-    const { setName } = useContext(DataContext);
+    const [name, setName] = useState("");
+    const { setData } = useContext(DataContext);
+
+    useEffect(() => {
+        const getData = async () => {
+            const fetched = await fetch(
+                `https://rickandmortyapi.com/api/character/?name=${name}`
+            );
+            const res = await fetched.json();
+            setData([...new Set([...res.results])]);
+        };
+
+        getData();
+    }, [name, setData]);
 
     const debounce = (fn, delay) => {
         let timer;
@@ -18,7 +31,7 @@ const Search = () => {
         };
     };
 
-    const handleChange = debounce((e) => setName(e.target.value), 1000);
+    const handleChange = debounce((e) => setName(e.target.value), 500);
 
     return (
         <div className="search-div">
